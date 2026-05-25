@@ -4,13 +4,14 @@ extends Node2D
 
 func _on_play_pressed() -> void:
 	$Play.scale = Vector2(.9,.9)
-	await get_tree().create_timer(0.1).timeout
+	$CanvasLayer/AnimationPlayer.play("fade")
+	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://level.tscn")
 
 
 func _on_exit_pressed() -> void:
 	$Exit.scale = Vector2(.9,.9)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.3).timeout
 	get_tree().quit()
 
 
