@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://8o2fgkowosi8"]
 
 [ext_resource type="Script" uid="uid://c0hkgx4w22mal" path="res://menu.gd" id="1_lti8b"]
-[ext_resource type="Texture2D" uid="uid://pgt14fctt0go" path="res://freefantasy.png" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://pgt14fctt0go" path="res://GandalfHardcore FREE Platformer Assets/freefantasy.png" id="2_mae5d"]
 [ext_resource type="PackedScene" uid="uid://dxc2rfi8mcot5" path="res://bg.tscn" id="2_ouk20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hy44"]
