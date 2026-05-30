@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxc2rfi8mcot5"]
 
-[ext_resource type="Texture2D" uid="uid://bei3p15g6c74c" path="res://PNG/Cartoon_Forest_BG_03/Layers/Sky.png" id="1_36ycx"]
+[ext_resource type="Texture2D" uid="uid://bei3p15g6c74c" path="res://GandalfHardcore FREE Platformer Assets/PNG/Cartoon_Forest_BG_03/Layers/Sky.png" id="1_36ycx"]
 [ext_resource type="Script" uid="uid://c11kbkvay3i67" path="res://bg.gd" id="1_plmvg"]
-[ext_resource type="Texture2D" uid="uid://byd5v08h013p7" path="res://PNG/Cartoon_Forest_BG_03/Layers/BG_Decor.png" id="2_plmvg"]
-[ext_resource type="Texture2D" uid="uid://bg5c7fqjaphrb" path="res://PNG/Cartoon_Forest_BG_03/Layers/Middle_Decor.png" id="3_7sudn"]
-[ext_resource type="Texture2D" uid="uid://bct06dvf4vj6y" path="res://PNG/Cartoon_Forest_BG_03/Layers/Foreground.png" id="4_b16yh"]
-[ext_resource type="Texture2D" uid="uid://bao0txntfyw3m" path="res://PNG/Cartoon_Forest_BG_03/Layers/Ground.png" id="5_twoho"]
+[ext_resource type="Texture2D" uid="uid://byd5v08h013p7" path="res://GandalfHardcore FREE Platformer Assets/PNG/Cartoon_Forest_BG_03/Layers/BG_Decor.png" id="2_plmvg"]
+[ext_resource type="Texture2D" uid="uid://bg5c7fqjaphrb" path="res://GandalfHardcore FREE Platformer Assets/PNG/Cartoon_Forest_BG_03/Layers/Middle_Decor.png" id="3_7sudn"]
+[ext_resource type="Texture2D" uid="uid://bct06dvf4vj6y" path="res://GandalfHardcore FREE Platformer Assets/PNG/Cartoon_Forest_BG_03/Layers/Foreground.png" id="4_b16yh"]
+[ext_resource type="Texture2D" uid="uid://bao0txntfyw3m" path="res://GandalfHardcore FREE Platformer Assets/PNG/Cartoon_Forest_BG_03/Layers/Ground.png" id="5_twoho"]
 
 [node name="bg" type="ParallaxBackground"]
 script = ExtResource("1_plmvg")
