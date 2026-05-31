@@ -11,6 +11,8 @@ const JUMP_VELOCITY = -400.0
 var health = 100
 var max_health = 100
 
+var gear = 0
+
 var knocked_back = false
 var cooldown = 0.2
 
@@ -75,4 +77,5 @@ func take_damage(amount: int, knockback_direction: int, knockback_force:float) -
 func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
-	print("Player died")
+	queue_free()
+	get_tree().change_scene_to_file("res://menu.tscn")

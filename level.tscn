@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cangeby8p4jne"]
+[gd_scene load_steps=22 format=4 uid="uid://cangeby8p4jne"]
 
 [ext_resource type="Script" uid="uid://db4g3rphqr6j3" path="res://level.gd" id="1_8cye3"]
 [ext_resource type="Texture2D" uid="uid://cwla7i7hvo4ss" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="2_2orkt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://decct0yaw1g2l" path="res://GandalfHardcore FREE Platformer Assets/Other Tiles2.png" id="8_fedht"]
 [ext_resource type="PackedScene" uid="uid://wkgrp7a5bfor" path="res://Player/player.tscn" id="9_4c15r"]
 [ext_resource type="PackedScene" uid="uid://bxirntm5rx3k6" path="res://Mobs/slime.tscn" id="10_ait7k"]
+[ext_resource type="PackedScene" uid="uid://3id4cl3cknca" path="res://gear.tscn" id="10_v5j5c"]
 [ext_resource type="Texture2D" uid="uid://f1b01cn6ayyh" path="res://Retro Inventory/Original/Health_01.png" id="11_8b0r0"]
 [ext_resource type="Texture2D" uid="uid://qqj4s3yyiqt5" path="res://Retro Inventory/Original/Heart_Red_1.png" id="12_h6smj"]
 [ext_resource type="Texture2D" uid="uid://cus7vbmejyl26" path="res://Retro Inventory/Original/Health_01_Bar01.png" id="13_v5j5c"]
@@ -475,6 +476,11 @@ position = Vector2(70, 468)
 
 [node name="Slime" parent="Mobs" instance=ExtResource("10_ait7k")]
 position = Vector2(425, 464)
+
+[node name="Loot" type="Node" parent="."]
+
+[node name="gear" parent="Loot" instance=ExtResource("10_v5j5c")]
+position = Vector2(19, 463)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fedht")

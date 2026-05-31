@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://3id4cl3cknca"]
+
+[ext_resource type="Texture2D" uid="uid://cj1te0karm6ta" path="res://Retro Inventory/gear.png" id="1_u3nac"]
+[ext_resource type="Script" uid="uid://2r7q5bi3g46b" path="res://gear.gd" id="1_y8ccp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8ccp"]
+radius = 11.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnell"]
+atlas = ExtResource("1_u3nac")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gti5y"]
+atlas = ExtResource("1_u3nac")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hfvt"]
+atlas = ExtResource("1_u3nac")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdcu1"]
+atlas = ExtResource("1_u3nac")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd2n7"]
+atlas = ExtResource("1_u3nac")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai1uq"]
+atlas = ExtResource("1_u3nac")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01j0y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnell")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gti5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hfvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdcu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd2n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai1uq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="gear" type="Area2D"]
+script = ExtResource("1_y8ccp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y8ccp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2.98023e-08)
+scale = Vector2(1.5625, 1.5625)
+sprite_frames = SubResource("SpriteFrames_01j0y")
+animation = &"idle"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.750449
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
