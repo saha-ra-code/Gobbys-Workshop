@@ -12,6 +12,3 @@ func _ready() -> void:
 func _on_player_health_changed(current_health: int, new_max_health: int) -> void:
 	max_value = new_max_health
 	value = current_health
-
-func _process(delta: float) -> void:
-	pass

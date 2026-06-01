@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cangeby8p4jne"]
+[gd_scene load_steps=25 format=4 uid="uid://cangeby8p4jne"]
 
 [ext_resource type="Script" uid="uid://db4g3rphqr6j3" path="res://level.gd" id="1_8cye3"]
 [ext_resource type="Texture2D" uid="uid://cwla7i7hvo4ss" path="res://GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Normal BG/GandalfHardcore Background layers_layer 5.png" id="2_2orkt"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://qqj4s3yyiqt5" path="res://Retro Inventory/Original/Heart_Red_1.png" id="12_h6smj"]
 [ext_resource type="Texture2D" uid="uid://cus7vbmejyl26" path="res://Retro Inventory/Original/Health_01_Bar01.png" id="13_v5j5c"]
 [ext_resource type="Script" uid="uid://qrjeb8yiq0sm" path="res://texture_progress_bar.gd" id="14_h6smj"]
+[ext_resource type="Script" uid="uid://n7g0osrhkh04" path="res://game_over.gd" id="16_5pxul"]
+[ext_resource type="Script" uid="uid://lwpmpwfgp85e" path="res://gear_counter.gd" id="17_4c15r"]
+[ext_resource type="Texture2D" uid="uid://evpbmirb0j78" path="res://Retro Inventory/Machinery_Gear_O_RareCollectibles_BigWander.png" id="17_fedht"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5pxul"]
 texture = ExtResource("8_fedht")
@@ -475,12 +478,24 @@ position = Vector2(70, 468)
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="Slime" parent="Mobs" instance=ExtResource("10_ait7k")]
-position = Vector2(425, 464)
+position = Vector2(416, 476)
+
+[node name="Slime2" parent="Mobs" instance=ExtResource("10_ait7k")]
+position = Vector2(476, 476)
+
+[node name="Slime3" parent="Mobs" instance=ExtResource("10_ait7k")]
+position = Vector2(693, 476)
+
+[node name="Slime4" parent="Mobs" instance=ExtResource("10_ait7k")]
+position = Vector2(881, 476)
+
+[node name="Slime5" parent="Mobs" instance=ExtResource("10_ait7k")]
+position = Vector2(1007, 476)
 
 [node name="Loot" type="Node" parent="."]
 
 [node name="gear" parent="Loot" instance=ExtResource("10_v5j5c")]
-position = Vector2(19, 463)
+position = Vector2(215, 465)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fedht")
@@ -503,26 +518,99 @@ shape = SubResource("RectangleShape2D_usj0q")
 position = Vector2(1157, 332)
 shape = SubResource("RectangleShape2D_usj0q")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
+[node name="GOSCREEN" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer2" node_paths=PackedStringArray("player")]
-offset_left = 15.1111
-offset_top = 14.2222
-offset_right = 79.1111
-offset_bottom = 54.2222
-value = 4.0
+[node name="Game over" type="Control" parent="GOSCREEN"]
+process_mode = 2
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_5pxul")
+
+[node name="ColorRect" type="ColorRect" parent="GOSCREEN/Game over"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="Label" type="Label" parent="GOSCREEN/Game over"]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 184.0
+offset_right = 705.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 50
+text = "Game over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GOSCREEN/Game over"]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 264.0
+offset_right = 620.0
+offset_bottom = 422.0
+
+[node name="Restart" type="Button" parent="GOSCREEN/Game over/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="Menu" type="Button" parent="GOSCREEN/Game over/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+
+[node name="Quit" type="Button" parent="GOSCREEN/Game over/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="HP" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HP" node_paths=PackedStringArray("player")]
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 84.0
+offset_bottom = 54.0
+scale = Vector2(3, 3)
+value = 6.0
 texture_under = ExtResource("11_8b0r0")
 texture_over = ExtResource("12_h6smj")
 texture_progress = ExtResource("13_v5j5c")
 script = ExtResource("14_h6smj")
 player = NodePath("../../Player/Player")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GearCounter" type="HBoxContainer" parent="HP"]
+offset_left = 236.0
+offset_top = 16.0
+offset_right = 314.0
+offset_bottom = 56.0
+script = ExtResource("17_4c15r")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Gear" type="TextureRect" parent="HP/GearCounter"]
+layout_mode = 2
+texture = ExtResource("17_fedht")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="GearLabel" type="Label" parent="HP/GearCounter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0/23"
+
+[node name="FadeOut" type="CanvasLayer" parent="."]
 visible = false
+
+[node name="ColorRect" type="ColorRect" parent="FadeOut"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -531,7 +619,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeOut"]
 libraries = {
 &"": SubResource("AnimationLibrary_0b4ue")
 }

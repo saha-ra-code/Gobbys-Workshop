@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal health_changed(current_health, max_health)
+signal gears_changed (current_gears, required_gears)
+signal  died
 
 
 const SPEED = 300.0
@@ -11,7 +13,8 @@ const JUMP_VELOCITY = -400.0
 var health = 100
 var max_health = 100
 
-var gear = 0
+var gears = 0
+var required_gears = 23
 
 var knocked_back = false
 var cooldown = 0.2
@@ -21,6 +24,7 @@ var is_dead = false
 
 func _physics_process(delta: float) -> void:
 	if  is_dead:
+		move_and_slide()
 		return
 	# Add the gravity.
 	if not is_on_floor():
@@ -57,8 +61,11 @@ func _physics_process(delta: float) -> void:
 		anim.play("fall")
 
 	move_and_slide()
-	
+
 func take_damage(amount: int, knockback_direction: int, knockback_force:float) -> void:
+	if is_dead:
+		return
+		
 	health -= amount
 	health = clamp(health, 0, max_health)
 	health_changed.emit(health, max_health)
@@ -73,9 +80,17 @@ func take_damage(amount: int, knockback_direction: int, knockback_force:float) -
 	
 	if health <=0:
 		die()
-		
+		return
+
+func collect_gear() -> void:
+	gears += 1
+	gears = clamp(gears, 0, required_gears)
+	gears_changed.emit(gears, required_gears)
+	print("Gears: ", gears, "/", required_gears)
+
 func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
-	queue_free()
-	get_tree().change_scene_to_file("res://menu.tscn")
+	anim.play("death")
+	await anim.animation_finished
+	died.emit()

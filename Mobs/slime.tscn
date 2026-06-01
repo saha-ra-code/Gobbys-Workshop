@@ -239,6 +239,7 @@ position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_yduw5")
 
 [node name="detector" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
 position = Vector2(0, -6)
