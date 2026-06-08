@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal health_changed(current_health, max_health)
 signal gears_changed (current_gears, required_gears)
+signal level_completed
 signal  died
 
 
@@ -87,6 +88,9 @@ func collect_gear() -> void:
 	gears = clamp(gears, 0, required_gears)
 	gears_changed.emit(gears, required_gears)
 	print("Gears: ", gears, "/", required_gears)
+	
+	if gears >= required_gears:
+		level_completed.emit()
 
 func die() -> void:
 	is_dead = true

@@ -15,8 +15,11 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	var player = $"../../Player/Player"
-	var direction = (player.position - self.position).normalized()
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	
+	var direction = (player.global_position - global_position).normalized()
 	if alive == true:
 		if chase == true:
 			velocity.x = direction.x * speed
