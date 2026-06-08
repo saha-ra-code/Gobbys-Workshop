@@ -1,8 +1,8 @@
 extends Area2D
 
 var collected = false
-@export var lifetime = 3.0
-@export var blink_time = 1.5
+@export var lifetime = 5.0
+@export var blink_time = 2
 @export var blink_interval = 0.15
 
 

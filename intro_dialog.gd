@@ -8,18 +8,26 @@ var curent_line = 0
 var lines = [
 	"Hey there! I am Gobbi, inventor, tinkerer, and occasional victim of my own excellent ideas.",
 	"I have big plans, but first I need to collect the gears in this forest (not surprising, really, I am the one who keeps losing them here).",
-	"Help me gather 23 gears. They disappear real fast! Turn around for one second and poof, gone! So be quick!",
+	"Help me gather 10 gears. They disappear real fast! Turn around for one second and poof, gone! So be quick!",
 	"Oh, and there is one more tini-tiny thing. This forest is full of slimes. They are cute. As long as you do not get too close."
 ]
 
 func _ready() -> void:
+	continue_button.pressed.connect(_on_continue_pressed)
+	
+	if GameState.intro_show:
+		visible = false
+		get_tree().paused = false
+		return
+	GameState.intro_show = true
+		
 	get_tree().paused = true
 	visible = true
 	
 	dialog_label.text = lines [curent_line]
 	continue_button.text = "Next"
 	
-	continue_button.pressed.connect(_on_continue_pressed)
+
 	
 func _on_continue_pressed() -> void:
 	curent_line +=1

@@ -6,16 +6,20 @@ signal level_completed
 signal  died
 
 
-const SPEED = 300.0
+const SPEED = 180
 const JUMP_VELOCITY = -400.0
 
 @onready var anim = $AnimatedSprite2D
 
+@export var invincible_time = 1.0
+@export var blink_interval = 0.1
+
+var is_invincible = false
 var health = 100
 var max_health = 100
 
 var gears = 0
-var required_gears = 23
+var required_gears = 10
 
 var knocked_back = false
 var cooldown = 0.2
@@ -67,10 +71,14 @@ func take_damage(amount: int, knockback_direction: int, knockback_force:float) -
 	if is_dead:
 		return
 		
+	if is_invincible:
+		return
 	health -= amount
 	health = clamp(health, 0, max_health)
 	health_changed.emit(health, max_health)
 	print("Player health: ", health)
+	
+	start_invincibility()
 	
 	knocked_back = true
 	
@@ -82,6 +90,24 @@ func take_damage(amount: int, knockback_direction: int, knockback_force:float) -
 	if health <=0:
 		die()
 		return
+		
+func start_invincibility() -> void:
+	is_invincible = true
+	
+	var elapsed = 0.0
+	
+	while elapsed < invincible_time:
+		anim.visible = false
+		await get_tree().create_timer(blink_interval).timeout
+		
+		anim.visible = true	
+		await get_tree().create_timer(blink_interval).timeout
+		
+		elapsed += blink_interval * 2.0
+		
+	is_invincible = false
+	anim.visible = true
+	
 
 func collect_gear() -> void:
 	gears += 1

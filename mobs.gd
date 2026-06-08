@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var mob_scene: PackedScene
-@export var respawn_delay = 2.0
-@export var max_mobs = 6
+@export var respawn_delay = 3.0
+@export var max_mobs = 5
 
 var alive_mobs = 0
 
