@@ -62,15 +62,6 @@ This prototype was developed to practice:
 
 Prototype / Work in Progress
 
-## Future Improvements
-
-* Crafting mechanics
-* Inventory system
-* Additional enemy types
-* Multiple levels
-* Boss encounters
-* Save system
-
 ## Author
 
 Created by Saha Ra.
